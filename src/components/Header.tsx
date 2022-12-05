@@ -1,26 +1,53 @@
+import { useRef } from "react";
 import {
   Box,
   Flex,
   Button,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
+  IconButton,
   Text,
+  Tooltip,
+  Drawer,
+  DrawerOverlay,
+  DrawerBody,
+  DrawerCloseButton,
+  useDisclosure,
+  useMediaQuery,
+  useColorMode,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import { FiChevronDown } from "react-icons/fi";
+import { FiSun, FiMoon } from "react-icons/fi";
+import { IoIosPeople } from "react-icons/io";
+import { FaUserTie } from "react-icons/fa";
+import { GiHamburgerMenu } from "react-icons/gi";
 import { Path } from "../utils/path";
 
+function DrawerMenu() {
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const btnRef = useRef(null);
+
+  return (
+    <>
+      <Button>
+        <GiHamburgerMenu />
+      </Button>
+    </>
+  );
+}
+
 export default function Header() {
+  const { colorMode, toggleColorMode } = useColorMode();
+
   return (
     <Box
       as="header"
       zIndex="1000"
       p={{
-        xl: "0 2em",
+        lg: "0 1em",
+        xl: "0 1.5em",
         "2xl": "0 2em",
       }}
+      width="100%"
     >
       <Flex
         as="nav"
@@ -29,15 +56,18 @@ export default function Header() {
           "2xl": "100%",
         }}
         height={{
+          lg: "80px",
           xl: "80px",
           "2xl": "80px",
         }}
         direction={{
+          lg: "row",
           xl: "row",
           "2xl": "row",
         }}
         align="center"
         justify={{
+          lg: "space-between",
           xl: "space-between",
           "2xl": "space-between",
         }}
@@ -47,67 +77,36 @@ export default function Header() {
         </Text>
         <Flex
           as="ul"
-          width={{
-            xl: "100%",
+          display={{
+            base: "none",
+            sm: "none",
+            md: "none",
+            lg: "inherit",
+            xl: "inherit",
+            "2xl": "inherit",
           }}
+          width="100%"
           maxW={{
+            lg: "600px",
             xl: "700px",
-            "2xl": "100%",
+            "2xl": "800px",
           }}
+          ml={{ lg: "1.5em" }}
           fontFamily="prompt"
           fontWeight="700"
           align="center"
           gap={{
+            lg: "1em",
             xl: "3em",
             "2xl": "5em",
           }}
         >
-          <Menu>
-            <MenuButton
-              as={Button}
-              rightIcon={<FiChevronDown />}
-              bg="none"
-              p="0"
-              _hover={{
-                bg: "none",
-              }}
-              _active={{
-                bg: "none",
-              }}
-            >
-              Room
-            </MenuButton>
-            <MenuList>
-              <MenuItem>Download</MenuItem>
-              <MenuItem>Create a Copy</MenuItem>
-              <MenuItem>Mark as Draft</MenuItem>
-              <MenuItem>Delete</MenuItem>
-              <MenuItem>Attend a Workshop</MenuItem>
-            </MenuList>
-          </Menu>
-          <Menu>
-            <MenuButton
-              as={Button}
-              rightIcon={<FiChevronDown />}
-              bg="none"
-              p="0"
-              _hover={{
-                bg: "none",
-              }}
-              _active={{
-                bg: "none",
-              }}
-            >
-              House
-            </MenuButton>
-            <MenuList>
-              <MenuItem>Download</MenuItem>
-              <MenuItem>Create a Copy</MenuItem>
-              <MenuItem>Mark as Draft</MenuItem>
-              <MenuItem>Delete</MenuItem>
-              <MenuItem>Attend a Workshop</MenuItem>
-            </MenuList>
-          </Menu>
+          <Box>
+            <Link to="/">Room</Link>
+          </Box>
+          <Box>
+            <Link to="/">House</Link>
+          </Box>
           <Box>
             <Link to="/">Hotel Apartments</Link>
           </Box>
@@ -120,30 +119,43 @@ export default function Header() {
         </Flex>
         <Flex
           fontFamily="ibmSans"
+          fontSize="1.5rem"
           align="center"
           gap={{
-            "2xl": "2em",
+            lg: ".5em",
+            xl: "1em",
+            "2xl": "1em",
           }}
         >
-          <Box>
-            <Link to="/">Become a Host</Link>
-          </Box>
-          <Box>
-            <Link to="/">Find Roommate</Link>
-          </Box>
-          <Box>
-            <Button
-              as="a"
-              p="0 2em"
-              bgColor="black"
-              color="#fff"
-              cursor="pointer"
-              _hover={{ bgColor: "gray.500" }}
-              _active={{ bgColor: "gray.600" }}
-            >
-              Sign in
-            </Button>
-          </Box>
+          <Tooltip label="Become a host" hasArrow arrowSize={10}>
+            <Text marginBlockStart="0" marginBlockEnd="0">
+              <Link to={Path.becomeHost}>
+                <FaUserTie />
+              </Link>
+            </Text>
+          </Tooltip>
+          <Tooltip label="Find a roommate" hasArrow arrowSize={10}>
+            <Text marginBlockStart="0" marginBlockEnd="0">
+              <Link to="/">
+                <IoIosPeople />
+              </Link>
+            </Text>
+          </Tooltip>
+          <IconButton
+            onClick={toggleColorMode}
+            aria-label="Color Mode Toggle Button"
+            icon={colorMode === "light" ? <FiMoon /> : <FiSun />}
+          />
+          <Button
+            p="0 2em"
+            bgColor={useColorModeValue("black", "white")}
+            color={useColorModeValue("white", "black")}
+            cursor="pointer"
+            _hover={{ bgColor: "gray.500" }}
+            _active={{ bgColor: "gray.600" }}
+          >
+            Sign in
+          </Button>
         </Flex>
       </Flex>
     </Box>
