@@ -1,6 +1,7 @@
-import { Flex, Text, Button, Image, Wrap, WrapItem } from "@chakra-ui/react";
+import { Flex, Text, Button, Image, Box } from "@chakra-ui/react";
 import Title from "../components/home/Title";
 import * as rest from "../assets/rest.jpg";
+import * as woman from "../assets/woman.svg";
 import WhyChooseUsFlexItems from "../components/home/WhyChooseUs";
 
 export default function HomePage() {
@@ -9,7 +10,6 @@ export default function HomePage() {
       {/* Become Host Section */}
       <Flex
         as="section"
-        overflowX="hidden"
         width="100vw"
         height={{
           sm: "fit-content",
@@ -53,14 +53,20 @@ export default function HomePage() {
         }}
       >
         <Flex as="div" direction="column" align={{ base: "center" }}>
-          <Title titlePrefix="Become" title="Host" primary />
+          <Title
+            titlePrefix="Become"
+            title="Host"
+            primary
+            titleSection="hero"
+          />
           <Text
             mt="2.5em"
             maxWidth="300px"
             lineHeight="2em"
             fontSize={{
               base: ".9rem",
-              lg: "1rem",
+              md: "1rem",
+              lg: "1.125rem",
               xl: "1.125rem",
               "2xl": "1.125rem",
             }}
@@ -68,6 +74,8 @@ export default function HomePage() {
             mb="2em"
             textAlign={{
               base: "center",
+              lg: "left",
+              xl: "left",
             }}
           >
             Meet people from all over the world, explore more of your own city
@@ -126,12 +134,60 @@ export default function HomePage() {
       {/* Why people choose us Section */}
       <Flex
         as="section"
-        width="100vw"
-        direction={{ base: "column" }}
-        align={{ base: "center" }}
+        width="100%"
+        align="center"
+        justify={{
+          base: "center",
+          lg: "space-between",
+          xl: "space-around",
+        }}
+        mt={{
+          xl: "3em",
+        }}
+        p={{
+          lg: "0 3em",
+        }}
       >
-        <Title titlePrefix="Why people" title="Choose us" primary />
-        <WhyChooseUsFlexItems />
+        <Box
+          width={{
+            lg: "350px",
+            xl: "400px",
+          }}
+          height={{
+            lg: "550px",
+            xl: "600px",
+          }}
+          bgColor="orange.400"
+          borderTopLeftRadius="70px"
+          borderBottomRightRadius="70px"
+          position="relative"
+        >
+          <Image
+            src={woman.default}
+            alt="woman"
+            position="absolute"
+            right={{
+              lg: "-20%",
+            }}
+            top={{
+              lg: "10%",
+              xl: "20%",
+            }}
+            transform={{
+              lg: "scale(1.5)",
+              xl: "scale(1.5)",
+            }}
+          />
+        </Box>
+        <Box>
+          <Title
+            titlePrefix="Why people"
+            title="Choose us"
+            primary
+            titleSection="why"
+          />
+          <WhyChooseUsFlexItems />
+        </Box>
       </Flex>
     </>
   );

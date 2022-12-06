@@ -4,40 +4,42 @@ interface ITitle {
   titlePrefix?: string;
   title: string;
   primary?: boolean;
+  titleSection: "hero" | "host" | "why";
 }
 
-export default function Title({ titlePrefix, title, primary }: ITitle) {
+export default function Title({
+  titlePrefix,
+  title,
+  primary,
+  titleSection,
+}: ITitle) {
   return (
-    <Box as="div" width="fit-content">
+    <Box as="div" width="100%">
       <Box
         as="div"
         position="relative"
         textAlign={{
           base: "center",
+          lg: "left",
         }}
       >
         <Text
+          as="span"
           fontFamily="prompt"
-          fontSize={{
-            base: "7vw",
-            sm: "2.5rem",
-            md: "3rem",
-            lg: "2.5rem",
-            xl: "3rem",
-            "2xl": "3rem",
-          }}
           lineHeight="1em"
           fontWeight="bold"
+          fontSize={{ base: "1.5rem", md: "2rem", lg: "2.5rem" }}
         >
           {titlePrefix ? titlePrefix : null}
         </Text>
         <Text
+          as="h1"
           fontFamily="prompt"
           fontSize={{
-            base: "15vw",
-            sm: "6rem",
-            md: "7rem",
-            lg: "6rem",
+            base: "4rem",
+            sm: "4rem",
+            md: "5rem",
+            lg: "5.5rem",
             xl: "7rem",
             "2xl": "7rem",
           }}
@@ -48,25 +50,33 @@ export default function Title({ titlePrefix, title, primary }: ITitle) {
         </Text>
         {primary ? (
           <Text
-            width="100%"
-            minWidth="500px"
+            as="span"
+            whiteSpace="nowrap"
             position="absolute"
             bottom={{
-              base: "0",
-              sm: "0",
+              base: "-10px",
+              sm: "-10px",
               md: "-.5em",
-              lg: "-0.125rem",
+              lg: "-.5em",
               xl: "-.5em",
               "2xl": "-.5em",
             }}
             left={{
-              base: "20%",
+              base: "50%",
+              md: "50%",
+              lg: "30%",
+            }}
+            transform={{
+              base: "translateX(-50%)",
+              sm: "translateX(-50%)",
+              md: "translateX(-50%)",
+              lg: "translateX(-30%)",
             }}
             fontFamily="charmonman"
             fontSize={{
-              base: "5vw",
-              sm: "1.5rem",
-              md: "2.125rem",
+              base: "1.2rem",
+              sm: "1.2rem",
+              md: "1.5rem",
               lg: "1.8rem",
               xl: "2.125rem",
               "2xl": "2.125rem",
