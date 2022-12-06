@@ -41,6 +41,7 @@ export default function Header() {
   return (
     <Box
       as="header"
+      overflowX="hidden"
       zIndex="1000"
       p={{
         lg: "0 1em",

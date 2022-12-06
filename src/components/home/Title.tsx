@@ -9,11 +9,17 @@ interface ITitle {
 export default function Title({ titlePrefix, title, primary }: ITitle) {
   return (
     <Box as="div" width="fit-content">
-      <Box as="div" position="relative">
+      <Box
+        as="div"
+        position="relative"
+        textAlign={{
+          base: "center",
+        }}
+      >
         <Text
           fontFamily="prompt"
           fontSize={{
-            base: "2rem",
+            base: "7vw",
             sm: "2.5rem",
             md: "3rem",
             lg: "2.5rem",
@@ -28,7 +34,7 @@ export default function Title({ titlePrefix, title, primary }: ITitle) {
         <Text
           fontFamily="prompt"
           fontSize={{
-            base: "5rem",
+            base: "15vw",
             sm: "6rem",
             md: "7rem",
             lg: "6rem",
@@ -53,15 +59,20 @@ export default function Title({ titlePrefix, title, primary }: ITitle) {
               xl: "-.5em",
               "2xl": "-.5em",
             }}
-            left=".5em"
+            left={{
+              base: "20%",
+            }}
             fontFamily="charmonman"
             fontSize={{
-              base: "1.25rem",
+              base: "5vw",
               sm: "1.5rem",
               md: "2.125rem",
               lg: "1.8rem",
               xl: "2.125rem",
               "2xl": "2.125rem",
+            }}
+            textAlign={{
+              base: "initial",
             }}
             color="orange.400"
             fontWeight="semibold"

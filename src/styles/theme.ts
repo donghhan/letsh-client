@@ -29,6 +29,22 @@ const theme = extendTheme({
     charmonman: "'Charmonman', cursive",
     rubik: "'Rubik Distressed', cursive",
   },
+  style: {
+    global: {
+      html: {
+        padding: "0",
+        margin: "0",
+        boxSizing: "border-box",
+        overflow: "hidden",
+      },
+      a: {
+        textDecoration: "none",
+      },
+      "ul, li": {
+        listStyle: "none",
+      },
+    },
+  },
 });
 
 export default theme;
