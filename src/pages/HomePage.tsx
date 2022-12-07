@@ -2,11 +2,85 @@ import { Flex, Text, Button, Image, Box } from "@chakra-ui/react";
 import Title from "../components/home/Title";
 import * as rest from "../assets/rest.jpg";
 import * as woman from "../assets/woman.svg";
+import * as freelancer from "../assets/freelancer.svg";
 import WhyChooseUsFlexItems from "../components/home/WhyChooseUs";
+import NewSuiteGrid from "../components/home/NewSuiteGrid";
 
 export default function HomePage() {
   return (
     <>
+      {/* New Suites For You Section */}
+      <Flex
+        as="section"
+        width="100vw"
+        direction="column"
+        mb={{ base: "7em" }}
+        align="center"
+        p={{ base: "0 1.5em" }}
+      >
+        <Title title="New suites for you" />
+        <Text
+          fontFamily="ibmSans"
+          mt={{ base: "1.5em" }}
+          textAlign={{ base: "center" }}
+        >
+          Introducting an entirely new way to stay in your favourite
+          neighborhoods in Thailand
+        </Text>
+        <NewSuiteGrid />
+      </Flex>
+      {/* How Does It Work Section */}
+      <Flex
+        as="section"
+        width="100vw"
+        bgColor="orange.400"
+        borderBottomLeftRadius="50px"
+        borderTopRightRadius="50px"
+        p={{
+          base: "2em",
+        }}
+        height={{ sm: "fit-content", lg: "100vh" }}
+        direction={{
+          base: "column",
+          md: "row",
+        }}
+        align={{
+          base: "center",
+        }}
+        justify={{
+          md: "space-between",
+          lg: "space-around",
+        }}
+        gap={{
+          md: "30px",
+        }}
+      >
+        <Box>
+          <Image
+            src={freelancer.default}
+            alt="freelancer"
+            width={{
+              base: "100%",
+              md: "500px",
+            }}
+          />
+        </Box>
+        <Box mt={{ base: "1.5em" }}>
+          <Title title="How does it works" />
+          <Text
+            mt={{ base: "1.5em" }}
+            lineHeight="1.5em"
+            maxWidth={{ md: "400px" }}
+            fontSize={{ lg: "1.125rem" }}
+          >
+            Rent is a fee you pay in exchange for the use of someone's property.
+            Apartment rent gives you the right to occupy a residential apartment
+            and the terms of your occupancy are described in the lease. Someof
+            the things lease covers are the amount of rent, when it's due and
+            fees or penalties for late payment as well as tenant restrictions.
+          </Text>
+        </Box>
+      </Flex>
       {/* Become Host Section */}
       <Flex
         as="section"
@@ -53,12 +127,7 @@ export default function HomePage() {
         }}
       >
         <Flex as="div" direction="column" align={{ base: "center" }}>
-          <Title
-            titlePrefix="Become"
-            title="Host"
-            primary
-            titleSection="hero"
-          />
+          <Title titlePrefix="Become" title="Host" primary />
           <Text
             mt="2.5em"
             maxWidth="300px"
@@ -180,12 +249,7 @@ export default function HomePage() {
           />
         </Box>
         <Box>
-          <Title
-            titlePrefix="Why people"
-            title="Choose us"
-            primary
-            titleSection="why"
-          />
+          <Title titlePrefix="Why people" title="Choose us" primary />
           <WhyChooseUsFlexItems />
         </Box>
       </Flex>
