@@ -5,24 +5,86 @@ import * as woman from "../assets/woman.svg";
 import * as freelancer from "../assets/freelancer.svg";
 import WhyChooseUsFlexItems from "../components/home/WhyChooseUs";
 import NewSuiteGrid from "../components/home/NewSuiteGrid";
+import HeroImageGrid from "../components/home/HeroImageGrid";
 
 export default function HomePage() {
   return (
-    <>
+    <Box as="main">
+      {/* Hero Section */}
+      <Flex
+        as="section"
+        width="100%"
+        minH="100vh"
+        direction={{
+          base: "column",
+          sm: "column",
+          md: "column",
+          lg: "row",
+          xl: "row",
+          "2xl": "row",
+        }}
+        justify="space-between"
+        align="center"
+        px={{
+          base: "2em",
+          lg: "4em",
+          xl: "6em",
+          "2xl": "10em",
+        }}
+        m={{
+          base: "5em 0",
+          md: "9em 0",
+          lg: "0",
+        }}
+        position="relative"
+      >
+        <Flex
+          direction="column"
+          textAlign={{ base: "center" }}
+          align={{ base: "center", lg: "flex-start" }}
+        >
+          <Title titlePrefix="Start Living" title="Move On" primary />
+          <Text
+            maxW={{ sm: "300px", md: "380px", xl: "400px", "2xl": "400px" }}
+            mt={{ base: "2.5em" }}
+            textAlign={{ lg: "left" }}
+            fontSize={{ md: "1.125rem", xl: "1.25rem", "2xl": "1.25rem" }}
+          >
+            Find and Rent Out Room, Flat, Aprtments, Transportations & Parking
+            Spaces
+          </Text>
+          <Button
+            width="180px"
+            height="50px"
+            marginTop="8"
+            color="white"
+            bgColor="orange.500"
+            _hover={{ bg: "orange.400" }}
+            _active={{ bg: "orange.700" }}
+            boxShadow="0px 8px 15px rgba(0, 0, 0, .3)"
+          >
+            Book now
+          </Button>
+        </Flex>
+        <HeroImageGrid />
+      </Flex>
       {/* New Suites For You Section */}
       <Flex
         as="section"
         width="100vw"
         direction="column"
         mb={{ base: "7em" }}
-        align="center"
-        p={{ base: "0 1.5em" }}
+        align={{ base: "center", lg: "flex-start" }}
+        p={{ base: "0 1.5em", lg: "0 4em", xl: "0 6em", "2xl": "0 10em" }}
       >
         <Title title="New suites for you" />
         <Text
+          maxW={{ sm: "400px" }}
           fontFamily="ibmSans"
           mt={{ base: "1.5em" }}
-          textAlign={{ base: "center" }}
+          mb={{ base: "1em" }}
+          textAlign={{ base: "center", lg: "left" }}
+          fontSize={{ lg: "1.125rem", xl: "1.25rem" }}
         >
           Introducting an entirely new way to stay in your favourite
           neighborhoods in Thailand
@@ -38,17 +100,17 @@ export default function HomePage() {
         borderTopRightRadius="50px"
         p={{
           base: "2em",
+          lg: "5em",
         }}
-        height={{ sm: "fit-content", lg: "100vh" }}
+        height={{ base: "fit-content" }}
         direction={{
           base: "column",
-          md: "row",
+          lg: "row",
         }}
         align={{
           base: "center",
         }}
         justify={{
-          md: "space-between",
           lg: "space-around",
         }}
         gap={{
@@ -65,13 +127,14 @@ export default function HomePage() {
             }}
           />
         </Box>
-        <Box mt={{ base: "1.5em" }}>
+        <Flex display="column" align="center" mt={{ base: "1.5em" }}>
           <Title title="How does it works" />
           <Text
             mt={{ base: "1.5em" }}
             lineHeight="1.5em"
             maxWidth={{ md: "400px" }}
             fontSize={{ lg: "1.125rem" }}
+            textAlign={{ base: "center", lg: "left" }}
           >
             Rent is a fee you pay in exchange for the use of someone's property.
             Apartment rent gives you the right to occupy a residential apartment
@@ -79,7 +142,7 @@ export default function HomePage() {
             the things lease covers are the amount of rent, when it's due and
             fees or penalties for late payment as well as tenant restrictions.
           </Text>
-        </Box>
+        </Flex>
       </Flex>
       {/* Become Host Section */}
       <Flex
@@ -124,6 +187,7 @@ export default function HomePage() {
         }}
         m={{
           base: "5em 0",
+          lg: "0",
         }}
       >
         <Flex as="div" direction="column" align={{ base: "center" }}>
@@ -139,7 +203,7 @@ export default function HomePage() {
               xl: "1.125rem",
               "2xl": "1.125rem",
             }}
-            fontFamily="prompt"
+            fontFamily="ibmSans"
             mb="2em"
             textAlign={{
               base: "center",
@@ -161,7 +225,7 @@ export default function HomePage() {
             }}
             fontWeight="bold"
             fontSize={{
-              base: ".8rem",
+              base: "1rem",
             }}
             _hover={{
               bgColor: "orange.300",
@@ -210,9 +274,6 @@ export default function HomePage() {
           lg: "space-between",
           xl: "space-around",
         }}
-        mt={{
-          xl: "3em",
-        }}
         p={{
           lg: "0 3em",
         }}
@@ -253,6 +314,6 @@ export default function HomePage() {
           <WhyChooseUsFlexItems />
         </Box>
       </Flex>
-    </>
+    </Box>
   );
 }

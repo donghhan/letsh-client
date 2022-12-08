@@ -45,6 +45,7 @@ export default function NewSuiteGrid() {
       gap={{
         base: "4em",
         sm: "3.5em",
+        lg: "1em",
       }}
       width="100%"
       marginTop="1em"

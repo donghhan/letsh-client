@@ -87,12 +87,14 @@ export default function Title({ titlePrefix, title, primary }: ITitle) {
           </>
         ) : (
           <Text
+            as="h1"
             fontFamily="prompt"
             fontWeight="bold"
             lineHeight="1em"
-            fontSize={{ base: "2rem", md: "2.5rem", lg: "3rem" }}
-            textAlign={{ base: "center", md: "left" }}
+            fontSize={{ base: "2rem", md: "3rem", lg: "3rem" }}
+            textAlign={{ base: "center", lg: "left" }}
             maxW={{ lg: "300px" }}
+            whiteSpace={{ base: "normal", lg: "nowrap" }}
           >
             {title}
           </Text>
