@@ -18,7 +18,11 @@ const items = [
           className="fa-stack-2x"
           style={{ color: "black" }}
         />
-        <FontAwesomeIcon icon={faCommentDots} className="fa-stack-1x" />
+        <FontAwesomeIcon
+          icon={faCommentDots}
+          className="fa-stack-1x"
+          style={{ color: "white" }}
+        />
       </span>
     ),
     title: "Reviews",
@@ -33,7 +37,11 @@ const items = [
           className="fa-stack-2x"
           style={{ color: "black" }}
         />
-        <FontAwesomeIcon icon={faHeadphonesAlt} className="fa-stack-1x" />
+        <FontAwesomeIcon
+          icon={faHeadphonesAlt}
+          className="fa-stack-1x"
+          style={{ color: "white" }}
+        />
       </span>
     ),
     title: "24/7 Support",
@@ -48,7 +56,11 @@ const items = [
           className="fa-stack-2x"
           style={{ color: "black" }}
         />
-        <FontAwesomeIcon icon={faListCheck} className="fa-stack-1x" />
+        <FontAwesomeIcon
+          icon={faListCheck}
+          className="fa-stack-1x"
+          style={{ color: "white" }}
+        />
       </span>
     ),
     title: "Rooms",
@@ -63,7 +75,11 @@ const items = [
           className="fa-stack-2x"
           style={{ color: "black" }}
         />
-        <FontAwesomeIcon icon={faCreditCard} className="fa-stack-1x" />
+        <FontAwesomeIcon
+          icon={faCreditCard}
+          className="fa-stack-1x"
+          style={{ color: "white" }}
+        />
       </span>
     ),
     title: "Payment",
