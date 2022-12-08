@@ -95,10 +95,11 @@ export default function WhyChooseUsFlexItems() {
             >
               {icon}
             </Text>
-            <Box ml={{ base: "2em", sm: "2em" }} fontFamily="prompt">
+            <Box ml={{ base: "2em", sm: "2em" }}>
               <Text
                 marginBottom="10px"
                 fontWeight="bold"
+                fontFamily="prompt"
                 fontSize={{ base: "1rem", md: "1.3rem" }}
               >
                 {title}

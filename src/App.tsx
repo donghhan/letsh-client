@@ -8,7 +8,7 @@ export default function App() {
     <Box>
       {/* <Header /> */}
       <Outlet />
-      {/* <Footer /> */}
+      <Footer />
     </Box>
   );
 }
