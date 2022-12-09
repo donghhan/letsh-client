@@ -103,7 +103,7 @@ export default function Header() {
           }}
         >
           <Box>
-            <Link to="/">Room</Link>
+            <Link to={Path.rooms}>Room</Link>
           </Box>
           <Box>
             <Link to="/">House</Link>
