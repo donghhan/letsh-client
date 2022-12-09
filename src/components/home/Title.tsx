@@ -1,12 +1,14 @@
 import { Box, Text } from "@chakra-ui/react";
-
+import { useTranslation } from "react-i18next";
 interface ITitle {
-  titlePrefix?: string;
+  titlePrefix?: string | null;
   title: string;
   primary?: boolean;
 }
 
 export default function Title({ titlePrefix, title, primary }: ITitle) {
+  const { t, i18n } = useTranslation();
+
   return (
     <Box as="div" width="100%">
       <Box
@@ -48,18 +50,10 @@ export default function Title({ titlePrefix, title, primary }: ITitle) {
               as="span"
               whiteSpace="nowrap"
               position="absolute"
-              bottom={{
-                base: "-10px",
-                sm: "-10px",
-                md: "-.5em",
-                lg: "-.5em",
-                xl: "-.5em",
-                "2xl": "-.5em",
-              }}
+              bottom="-20px"
               left={{
                 base: "50%",
-                md: "50%",
-                lg: "30%",
+                lg: "20%",
               }}
               transform={{
                 base: "translateX(-50%)",
@@ -82,7 +76,7 @@ export default function Title({ titlePrefix, title, primary }: ITitle) {
               color="orange.400"
               fontWeight="semibold"
             >
-              Find your living space
+              {t("home:title_decoration")}
             </Text>
           </>
         ) : (

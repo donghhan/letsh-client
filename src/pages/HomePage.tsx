@@ -1,4 +1,5 @@
 import { Flex, Text, Button, Image, Box } from "@chakra-ui/react";
+import { useTranslation } from "react-i18next";
 import Title from "../components/home/Title";
 import * as rest from "../assets/rest.jpg";
 import * as woman from "../assets/woman.svg";
@@ -8,6 +9,8 @@ import NewSuiteGrid from "../components/home/NewSuiteGrid";
 import HeroImageGrid from "../components/home/HeroImageGrid";
 
 export default function HomePage() {
+  const { t } = useTranslation();
+
   return (
     <Box as="main">
       {/* Hero Section */}
@@ -43,15 +46,19 @@ export default function HomePage() {
           textAlign={{ base: "center" }}
           align={{ base: "center", lg: "flex-start" }}
         >
-          <Title titlePrefix="Start Living" title="Move On" primary />
+          <Title
+            titlePrefix={t("home:hero_title_prefix")}
+            title={t("home:hero_title")}
+            primary
+          />
           <Text
             maxW={{ sm: "300px", md: "380px", xl: "400px", "2xl": "400px" }}
             mt={{ base: "2.5em" }}
             textAlign={{ lg: "left" }}
             fontSize={{ md: "1.125rem", xl: "1.25rem", "2xl": "1.25rem" }}
+            fontFamily="ibmSans"
           >
-            Find and Rent Out Room, Flat, Aprtments, Transportations & Parking
-            Spaces
+            {t("home:hero_text")}
           </Text>
           <Button
             width="180px"
@@ -63,7 +70,7 @@ export default function HomePage() {
             _active={{ bg: "orange.700" }}
             boxShadow="0px 8px 15px rgba(0, 0, 0, .3)"
           >
-            Book now
+            {t("home:book_now")}
           </Button>
         </Flex>
         <HeroImageGrid />
@@ -77,7 +84,7 @@ export default function HomePage() {
         align={{ base: "center", lg: "flex-start" }}
         p={{ base: "0 1.5em", lg: "0 4em", xl: "0 6em", "2xl": "0 10em" }}
       >
-        <Title title="New suites for you" />
+        <Title title={t("home:new_suites_for_you_title")} />
         <Text
           maxW={{ sm: "400px" }}
           fontFamily="ibmSans"
@@ -86,8 +93,7 @@ export default function HomePage() {
           textAlign={{ base: "center", lg: "left" }}
           fontSize={{ lg: "1.125rem", xl: "1.25rem" }}
         >
-          Introducting an entirely new way to stay in your favourite
-          neighborhoods in Thailand
+          {t("home:new_suites_for_you_text")}
         </Text>
         <NewSuiteGrid />
       </Flex>
@@ -128,7 +134,7 @@ export default function HomePage() {
           />
         </Box>
         <Flex display="column" align="center" mt={{ base: "1.5em" }}>
-          <Title title="How does it works" />
+          <Title title={t("home:how_does_it_work_title")} />
           <Text
             mt={{ base: "1.5em" }}
             lineHeight="1.5em"
@@ -136,11 +142,7 @@ export default function HomePage() {
             fontSize={{ lg: "1.125rem" }}
             textAlign={{ base: "center", lg: "left" }}
           >
-            Rent is a fee you pay in exchange for the use of someone's property.
-            Apartment rent gives you the right to occupy a residential apartment
-            and the terms of your occupancy are described in the lease. Someof
-            the things lease covers are the amount of rent, when it's due and
-            fees or penalties for late payment as well as tenant restrictions.
+            {t("home:how_does_it_work_text")}
           </Text>
         </Flex>
       </Flex>
@@ -191,7 +193,11 @@ export default function HomePage() {
         }}
       >
         <Flex as="div" direction="column" align={{ base: "center" }}>
-          <Title titlePrefix="Become" title="Host" primary />
+          <Title
+            titlePrefix={t("home:become_host_titleprefix")}
+            title={t("home:become_host_title")}
+            primary
+          />
           <Text
             mt="2.5em"
             maxWidth="300px"
@@ -211,8 +217,7 @@ export default function HomePage() {
               xl: "left",
             }}
           >
-            Meet people from all over the world, explore more of your own city
-            and get paid for it
+            {t("home:become_host_text")}
           </Text>
           <Button
             as="a"
@@ -234,7 +239,7 @@ export default function HomePage() {
               bgColor: "orange.500",
             }}
           >
-            Register now
+            {t("home:register_now")}
           </Button>
         </Flex>
         <Flex justify="center">

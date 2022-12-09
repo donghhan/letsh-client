@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import { useRef, useCallback } from "react";
 import {
   Box,
   Flex,
@@ -15,6 +15,7 @@ import {
   useColorMode,
   useColorModeValue,
 } from "@chakra-ui/react";
+import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 import { FiSun, FiMoon } from "react-icons/fi";
 import { IoIosPeople } from "react-icons/io";
@@ -37,6 +38,15 @@ function DrawerMenu() {
 
 export default function Header() {
   const { colorMode, toggleColorMode } = useColorMode();
+
+  // i18n
+  const { t, i18n } = useTranslation();
+  const toggleLanguage = useCallback(
+    (locale: string) => {
+      i18n.changeLanguage(locale);
+    },
+    [i18n]
+  );
 
   return (
     <Box
@@ -143,9 +153,16 @@ export default function Header() {
             </Text>
           </Tooltip>
           <IconButton
+            aria-label="English lang toggle button"
+            onClick={() => toggleLanguage(i18n.language === "en" ? "th" : "en")}
+            icon={i18n.language === "en" ? <Text>🇹🇭</Text> : <Text>🇺🇸</Text>}
+            bgColor="transparent"
+          />
+          <IconButton
             onClick={toggleColorMode}
             aria-label="Color Mode Toggle Button"
             icon={colorMode === "light" ? <FiMoon /> : <FiSun />}
+            bgColor="transparent"
           />
           <Button
             p="0 2em"

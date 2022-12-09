@@ -1,39 +1,41 @@
 import { Box, Grid, GridItem, Image, Text } from "@chakra-ui/react";
+import { useTranslation } from "react-i18next";
 import * as car from "../../assets/car.png";
 import * as hotel from "../../assets/hotel.png";
 import * as room from "../../assets/room.png";
 import * as parking from "../../assets/parking.png";
 import * as house from "../../assets/house.png";
 
-const items = [
-  {
-    id: "rooms",
-    caption: "Rooms",
-    src: room,
-  },
-  {
-    id: "houses",
-    caption: "Houses",
-    src: house,
-  },
-  {
-    id: "hotel",
-    caption: "Hotel Apartments",
-    src: hotel,
-  },
-  {
-    id: "parking",
-    caption: "Parking",
-    src: parking,
-  },
-  {
-    id: "transportation",
-    caption: "Transportations",
-    src: car,
-  },
-];
-
 export default function NewSuiteGrid() {
+  const { t } = useTranslation();
+  const items = [
+    {
+      id: "rooms",
+      caption: t("home:rooms_caption"),
+      src: room,
+    },
+    {
+      id: "houses",
+      caption: t("home:houses_caption"),
+      src: house,
+    },
+    {
+      id: "hotel",
+      caption: t("home:hotel_apartments_caption"),
+      src: hotel,
+    },
+    {
+      id: "parking",
+      caption: t("home:parking_caption"),
+      src: parking,
+    },
+    {
+      id: "transportation",
+      caption: t("home:transportation_caption"),
+      src: car,
+    },
+  ];
+
   return (
     <Grid
       templateColumns={{

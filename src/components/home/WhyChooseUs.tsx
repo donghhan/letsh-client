@@ -1,4 +1,5 @@
-import { Flex, Box, Text, useColorMode } from "@chakra-ui/react";
+import { Flex, Box, Text } from "@chakra-ui/react";
+import { useTranslation } from "react-i18next";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCircle,
@@ -8,87 +9,87 @@ import {
   faCreditCard,
 } from "@fortawesome/free-solid-svg-icons";
 
-const items = [
-  {
-    id: "review",
-    icon: (
-      <span className="fa-stack fa-1x">
-        <FontAwesomeIcon
-          icon={faCircle}
-          className="fa-stack-2x"
-          style={{ color: "black" }}
-        />
-        <FontAwesomeIcon
-          icon={faCommentDots}
-          className="fa-stack-1x"
-          style={{ color: "white" }}
-        />
-      </span>
-    ),
-    title: "Reviews",
-    text: "Only guests who actually complete their stay with Let'sh are given the option to leave a review.",
-  },
-  {
-    id: "support",
-    icon: (
-      <span className="fa-stack fa-1x">
-        <FontAwesomeIcon
-          icon={faCircle}
-          className="fa-stack-2x"
-          style={{ color: "black" }}
-        />
-        <FontAwesomeIcon
-          icon={faHeadphonesAlt}
-          className="fa-stack-1x"
-          style={{ color: "white" }}
-        />
-      </span>
-    ),
-    title: "24/7 Support",
-    text: "Let'sh's call centers are covered around the clock, even on bank holidays.",
-  },
-  {
-    id: "rooms",
-    icon: (
-      <span className="fa-stack fa-1x">
-        <FontAwesomeIcon
-          icon={faCircle}
-          className="fa-stack-2x"
-          style={{ color: "black" }}
-        />
-        <FontAwesomeIcon
-          icon={faListCheck}
-          className="fa-stack-1x"
-          style={{ color: "white" }}
-        />
-      </span>
-    ),
-    title: "Rooms",
-    text: "Having a clean, comfortable and friendly place, we personally handpick every accomodation.",
-  },
-  {
-    id: "payments",
-    icon: (
-      <span className="fa-stack fa-1x">
-        <FontAwesomeIcon
-          icon={faCircle}
-          className="fa-stack-2x"
-          style={{ color: "black" }}
-        />
-        <FontAwesomeIcon
-          icon={faCreditCard}
-          className="fa-stack-1x"
-          style={{ color: "white" }}
-        />
-      </span>
-    ),
-    title: "Payment",
-    text: "Pay using a Credit Card (Visa, Master card, Visa electron, Union pay, American express, Mobile Money Transfers.",
-  },
-];
-
 export default function WhyChooseUsFlexItems() {
-  const { colorMode } = useColorMode();
+  const { t } = useTranslation();
+
+  const items = [
+    {
+      id: "review",
+      icon: (
+        <span className="fa-stack fa-1x">
+          <FontAwesomeIcon
+            icon={faCircle}
+            className="fa-stack-2x"
+            style={{ color: "black" }}
+          />
+          <FontAwesomeIcon
+            icon={faCommentDots}
+            className="fa-stack-1x"
+            style={{ color: "white" }}
+          />
+        </span>
+      ),
+      title: t("home:reviews"),
+      text: t("home:reviews_text"),
+    },
+    {
+      id: "support",
+      icon: (
+        <span className="fa-stack fa-1x">
+          <FontAwesomeIcon
+            icon={faCircle}
+            className="fa-stack-2x"
+            style={{ color: "black" }}
+          />
+          <FontAwesomeIcon
+            icon={faHeadphonesAlt}
+            className="fa-stack-1x"
+            style={{ color: "white" }}
+          />
+        </span>
+      ),
+      title: t("home:support"),
+      text: t("home:support_text"),
+    },
+    {
+      id: "rooms",
+      icon: (
+        <span className="fa-stack fa-1x">
+          <FontAwesomeIcon
+            icon={faCircle}
+            className="fa-stack-2x"
+            style={{ color: "black" }}
+          />
+          <FontAwesomeIcon
+            icon={faListCheck}
+            className="fa-stack-1x"
+            style={{ color: "white" }}
+          />
+        </span>
+      ),
+      title: "Rooms",
+      text: "Having a clean, comfortable and friendly place, we personally handpick every accomodation.",
+    },
+    {
+      id: "payments",
+      icon: (
+        <span className="fa-stack fa-1x">
+          <FontAwesomeIcon
+            icon={faCircle}
+            className="fa-stack-2x"
+            style={{ color: "black" }}
+          />
+          <FontAwesomeIcon
+            icon={faCreditCard}
+            className="fa-stack-1x"
+            style={{ color: "white" }}
+          />
+        </span>
+      ),
+      title: "Payment",
+      text: "Pay using a Credit Card (Visa, Master card, Visa electron, Union pay, American express, Mobile Money Transfers.",
+    },
+  ];
 
   return (
     <Flex
