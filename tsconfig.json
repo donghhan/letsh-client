@@ -10,6 +10,7 @@
     "strict": true,
     "forceConsistentCasingInFileNames": true,
     "module": "ESNext",
+    "typeRoots": ["./node_modules/@types/", "./src/@types/"],
     "moduleResolution": "Node",
     "resolveJsonModule": true,
     "isolatedModules": true,
