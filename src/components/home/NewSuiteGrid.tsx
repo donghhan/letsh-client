@@ -74,7 +74,12 @@ export default function NewSuiteGrid() {
                 }}
               />
             </Box>
-            <Text textAlign="center" fontWeight="bold" mt={{ base: "1em" }}>
+            <Text
+              textAlign="center"
+              fontWeight="bold"
+              mt={{ base: "1em" }}
+              fontFamily="ibmSans"
+            >
               {caption}
             </Text>
           </GridItem>

@@ -17,9 +17,8 @@ import {
 } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
-import { FiSun, FiMoon } from "react-icons/fi";
-import { IoIosPeople } from "react-icons/io";
-import { FaUserTie } from "react-icons/fa";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSun, faMoon } from "@fortawesome/free-solid-svg-icons";
 import { GiHamburgerMenu } from "react-icons/gi";
 import { Path } from "../utils/path";
 
@@ -59,6 +58,11 @@ export default function Header() {
         "2xl": "0 2em",
       }}
       width="100%"
+      position="fixed"
+      bgColor={colorMode === "light" ? "white" : "gray.800"}
+      borderBottom={
+        colorMode === "light" ? "1px solid lightgray" : "1px solid #505050"
+      }
     >
       <Flex
         as="nav"
@@ -77,26 +81,17 @@ export default function Header() {
           "2xl": "row",
         }}
         align="center"
-        justify={{
-          lg: "space-between",
-          xl: "space-between",
-          "2xl": "space-between",
-        }}
       >
         <Text fontFamily="rubik" fontSize="2.5rem" color="orange.400">
           <Link to={Path.home}>Let'sh</Link>
         </Text>
         <Flex
           as="ul"
+          width="100%"
           display={{
             base: "none",
-            sm: "none",
-            md: "none",
             lg: "inherit",
-            xl: "inherit",
-            "2xl": "inherit",
           }}
-          width="100%"
           maxW={{
             lg: "600px",
             xl: "700px",
@@ -105,7 +100,6 @@ export default function Header() {
           ml={{ lg: "1.5em" }}
           fontFamily="prompt"
           fontWeight="700"
-          align="center"
           gap={{
             lg: "1em",
             xl: "3em",
@@ -113,45 +107,40 @@ export default function Header() {
           }}
         >
           <Box>
-            <Link to={Path.rooms}>Room</Link>
+            <Link to={Path.rooms}>{t("ui:room")}</Link>
           </Box>
           <Box>
-            <Link to="/">House</Link>
+            <Link to="/">{t("ui:house")}</Link>
           </Box>
           <Box>
-            <Link to="/">Hotel Apartments</Link>
+            <Link to="/">{t("ui:hotel")}</Link>
           </Box>
           <Box>
-            <Link to="/">Transportation</Link>
+            <Link to="/">{t("ui:transportation")}</Link>
           </Box>
           <Box>
-            <Link to="/">Parking</Link>
+            <Link to="/">{t("ui:parking")}</Link>
           </Box>
         </Flex>
         <Flex
           fontFamily="ibmSans"
-          fontSize="1.5rem"
+          fontSize={{
+            lg: ".9rem",
+          }}
           align="center"
+          ml="auto"
           gap={{
             lg: ".5em",
             xl: "1em",
             "2xl": "1em",
           }}
         >
-          <Tooltip label="Become a host" hasArrow arrowSize={10}>
-            <Text marginBlockStart="0" marginBlockEnd="0">
-              <Link to={Path.becomeHost}>
-                <FaUserTie />
-              </Link>
-            </Text>
-          </Tooltip>
-          <Tooltip label="Find a roommate" hasArrow arrowSize={10}>
-            <Text marginBlockStart="0" marginBlockEnd="0">
-              <Link to="/">
-                <IoIosPeople />
-              </Link>
-            </Text>
-          </Tooltip>
+          <Text>
+            <Link to="/">{t("ui:become_a_host")}</Link>
+          </Text>
+          <Text>
+            <Link to="/">{t("ui:find_roommate")}</Link>
+          </Text>
           <IconButton
             aria-label="English lang toggle button"
             onClick={() => toggleLanguage(i18n.language === "en" ? "th" : "en")}
@@ -161,7 +150,13 @@ export default function Header() {
           <IconButton
             onClick={toggleColorMode}
             aria-label="Color Mode Toggle Button"
-            icon={colorMode === "light" ? <FiMoon /> : <FiSun />}
+            icon={
+              colorMode === "light" ? (
+                <FontAwesomeIcon icon={faMoon} />
+              ) : (
+                <FontAwesomeIcon icon={faSun} />
+              )
+            }
             bgColor="transparent"
           />
           <Button

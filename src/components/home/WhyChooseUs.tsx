@@ -124,6 +124,7 @@ export default function WhyChooseUsFlexItems() {
               <Text
                 fontSize={{ base: ".8rem", md: "1rem" }}
                 maxW={{ base: "200px", md: "800px" }}
+                fontFamily="ibmSans"
               >
                 {text}
               </Text>

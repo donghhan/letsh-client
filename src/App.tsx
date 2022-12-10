@@ -5,10 +5,12 @@ import Footer from "./components/Footer";
 
 export default function App() {
   return (
-    <Box>
+    <>
       <Header />
-      <Outlet />
+      <Box as="main" position="relative">
+        <Outlet />
+      </Box>
       <Footer />
-    </Box>
+    </>
   );
 }

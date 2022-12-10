@@ -12,7 +12,7 @@ export default function HomePage() {
   const { t } = useTranslation();
 
   return (
-    <Box as="main">
+    <>
       {/* Hero Section */}
       <Flex
         as="section"
@@ -20,11 +20,7 @@ export default function HomePage() {
         minH="100vh"
         direction={{
           base: "column",
-          sm: "column",
-          md: "column",
           lg: "row",
-          xl: "row",
-          "2xl": "row",
         }}
         justify="space-between"
         align="center"
@@ -141,6 +137,7 @@ export default function HomePage() {
             maxWidth={{ md: "400px" }}
             fontSize={{ lg: "1.125rem" }}
             textAlign={{ base: "center", lg: "left" }}
+            fontFamily="ibmSans"
           >
             {t("home:how_does_it_work_text")}
           </Text>
@@ -152,25 +149,15 @@ export default function HomePage() {
         width="100vw"
         height={{
           sm: "fit-content",
-          md: "fit-content",
           lg: "100vh",
-          xl: "100vh",
-          "2xl": "100vh",
         }}
         direction={{
           base: "column",
-          sm: "column",
-          md: "column",
           lg: "row",
-          xl: "row",
-          "2xl": "row",
         }}
         justify={{
           sm: "center",
-          md: "center",
           lg: "space-between",
-          xl: "space-between",
-          "2xl": "space-between",
         }}
         align={{
           base: "center",
@@ -192,7 +179,11 @@ export default function HomePage() {
           lg: "0",
         }}
       >
-        <Flex as="div" direction="column" align={{ base: "center" }}>
+        <Flex
+          as="div"
+          direction="column"
+          align={{ base: "center", lg: "flex-start" }}
+        >
           <Title
             titlePrefix={t("home:become_host_titleprefix")}
             title={t("home:become_host_title")}
@@ -206,8 +197,6 @@ export default function HomePage() {
               base: ".9rem",
               md: "1rem",
               lg: "1.125rem",
-              xl: "1.125rem",
-              "2xl": "1.125rem",
             }}
             fontFamily="ibmSans"
             mb="2em"
@@ -220,24 +209,14 @@ export default function HomePage() {
             {t("home:become_host_text")}
           </Text>
           <Button
-            as="a"
-            bgColor="orange.400"
-            width={{
-              base: "50%",
-            }}
-            height={{
-              base: "2.5rem",
-            }}
-            fontWeight="bold"
-            fontSize={{
-              base: "1rem",
-            }}
-            _hover={{
-              bgColor: "orange.300",
-            }}
-            _active={{
-              bgColor: "orange.500",
-            }}
+            width="180px"
+            height="50px"
+            marginTop="8"
+            color="white"
+            bgColor="orange.500"
+            _hover={{ bg: "orange.400" }}
+            _active={{ bg: "orange.700" }}
+            boxShadow="0px 8px 15px rgba(0, 0, 0, .3)"
           >
             {t("home:register_now")}
           </Button>
@@ -323,6 +302,6 @@ export default function HomePage() {
           <WhyChooseUsFlexItems />
         </Box>
       </Flex>
-    </Box>
+    </>
   );
 }

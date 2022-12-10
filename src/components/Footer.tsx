@@ -12,9 +12,12 @@ import {
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { Path } from "../utils/path";
+import { useTranslation } from "react-i18next";
 import { FaFacebookSquare, FaInstagramSquare } from "react-icons/fa";
 
 export default function Footer() {
+  const { t } = useTranslation();
+
   return (
     <Grid
       as="footer"
@@ -36,9 +39,12 @@ export default function Footer() {
         <Text fontFamily="rubik" fontSize="2.5rem" color="orange.400">
           Let'sh
         </Text>
-        <Text maxW={{ base: "300px" }} mt={{ base: "1em" }}>
-          Find and Rent Out Room, Flat, Apartments, Parking Sapces &
-          Transportations for Monthly Rent
+        <Text
+          maxW={{ base: "300px" }}
+          mt={{ base: "1em" }}
+          fontFamily="ibmSans"
+        >
+          {t("ui:footer_text")}
         </Text>
       </GridItem>
       <GridItem
@@ -48,18 +54,19 @@ export default function Footer() {
         }}
         p={{ base: "1em 0" }}
         lineHeight="2em"
+        fontFamily="ibmSans"
       >
         <Text>
-          <Link to="/">About Us</Link>
+          <Link to="/">{t("ui:about_us")}</Link>
         </Text>
         <Text>
-          <Link to="/">Reviews</Link>
+          <Link to="/">{t("ui:reviews")}</Link>
         </Text>
         <Text>
-          <Link to="/">Become a host</Link>
+          <Link to="/">{t("ui:become_a_host")}</Link>
         </Text>
         <Text>
-          <Link to="/">Find Roommate</Link>
+          <Link to="/">{t("ui:find_roommate")}</Link>
         </Text>
       </GridItem>
       <GridItem
@@ -69,29 +76,30 @@ export default function Footer() {
         }}
         p={{ base: "1em 0" }}
         lineHeight="2em"
+        fontFamily="ibmSans"
       >
         <Text>
-          <Link to="/">Rooms</Link>
+          <Link to="/">{t("ui:room")}</Link>
         </Text>
         <Text>
-          <Link to="/">Houses</Link>
+          <Link to="/">{t("ui:house")}</Link>
         </Text>
         <Text>
-          <Link to="/">Hotel</Link>
+          <Link to="/">{t("ui:hotel")}</Link>
         </Text>
         <Text>
-          <Link to="/">Parking</Link>
+          <Link to="/">{t("ui:parking")}</Link>
         </Text>
         <Text>
-          <Link to="/">Transportation</Link>
+          <Link to="/">{t("ui:transportation")}</Link>
         </Text>
       </GridItem>
-      <GridItem p={{ base: "1em 0" }} lineHeight="2em">
+      <GridItem p={{ base: "1em 0" }} lineHeight="2em" fontFamily="ibmSans">
         <Text>
           <Link to="/">info@letsh.com</Link>
         </Text>
-        <Text>Privacy Policy</Text>
-        <Text>Terms & Conditions</Text>
+        <Text>{t("ui:privacy_policy")}</Text>
+        <Text>{t("ui:terms_and_conditions")}</Text>
         <Flex
           fontSize={{ base: "2rem" }}
           mt={{ base: ".5em" }}
