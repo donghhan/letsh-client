@@ -315,7 +315,11 @@ export default function HomePage() {
           />
         </Box>
         <Box>
-          <Title titlePrefix="Why people" title="Choose us" primary />
+          <Title
+            titlePrefix={t("home:why_people_choose_us_titleprefix")}
+            title={t("home:why_people_choose_us_title")}
+            primary
+          />
           <WhyChooseUsFlexItems />
         </Box>
       </Flex>

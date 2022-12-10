@@ -67,8 +67,8 @@ export default function WhyChooseUsFlexItems() {
           />
         </span>
       ),
-      title: "Rooms",
-      text: "Having a clean, comfortable and friendly place, we personally handpick every accomodation.",
+      title: t("home:rooms"),
+      text: t("home:rooms_text"),
     },
     {
       id: "payments",
@@ -86,8 +86,8 @@ export default function WhyChooseUsFlexItems() {
           />
         </span>
       ),
-      title: "Payment",
-      text: "Pay using a Credit Card (Visa, Master card, Visa electron, Union pay, American express, Mobile Money Transfers.",
+      title: t("home:payment"),
+      text: t("home:payment_text"),
     },
   ];
 
