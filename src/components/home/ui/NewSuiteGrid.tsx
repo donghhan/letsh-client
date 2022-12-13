@@ -1,10 +1,10 @@
 import { Box, Grid, GridItem, Image, Text } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
-import * as car from "../../assets/car.png";
-import * as hotel from "../../assets/hotel.png";
-import * as room from "../../assets/room.png";
-import * as parking from "../../assets/parking.png";
-import * as house from "../../assets/house.png";
+import * as car from "../../../assets/car.png";
+import * as hotel from "../../../assets/hotel.png";
+import * as room from "../../../assets/room.png";
+import * as parking from "../../../assets/parking.png";
+import * as house from "../../../assets/house.png";
 
 export default function NewSuiteGrid() {
   const { t } = useTranslation();

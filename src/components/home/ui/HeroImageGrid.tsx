@@ -1,6 +1,6 @@
 import { Flex, Box } from "@chakra-ui/react";
 import { GiTreeBranch } from "react-icons/gi";
-import heroImage from "../../assets/hero_image.png";
+import heroImage from "../../../assets/hero_image.png";
 
 export default function HeroImageGrid() {
   return (
