@@ -1,3 +1,9 @@
+import { HTMLChakraProps, ThemingProps } from "@chakra-ui/react";
+
+export interface StyledButtonProps
+  extends HTMLChakraProps<"button" | "span">,
+    ThemingProps {}
+
 export interface IRoom {
   name: string;
   price_per_night: number;

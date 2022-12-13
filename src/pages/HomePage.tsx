@@ -7,6 +7,7 @@ import * as freelancer from "../assets/freelancer.svg";
 import WhyChooseUsFlexItems from "../components/home/WhyChooseUs";
 import NewSuiteGrid from "../components/home/NewSuiteGrid";
 import HeroImageGrid from "../components/home/HeroImageGrid";
+import HeroSection from "./home/HeroSection";
 
 export default function HomePage() {
   const { t } = useTranslation();
@@ -14,63 +15,7 @@ export default function HomePage() {
   return (
     <>
       {/* Hero Section */}
-      <Flex
-        as="section"
-        width="100%"
-        minH="100vh"
-        direction={{
-          base: "column",
-          lg: "row",
-        }}
-        justify="space-between"
-        align="center"
-        px={{
-          base: "2em",
-          lg: "4em",
-          xl: "6em",
-          "2xl": "10em",
-        }}
-        m={{
-          base: "5em 0",
-          md: "9em 0",
-          lg: "0",
-        }}
-        position="relative"
-      >
-        <Flex
-          direction="column"
-          textAlign={{ base: "center" }}
-          align={{ base: "center", lg: "flex-start" }}
-        >
-          <Title
-            titlePrefix={t("home:hero_title_prefix")}
-            title={t("home:hero_title")}
-            primary
-          />
-          <Text
-            maxW={{ sm: "300px", md: "380px", xl: "400px", "2xl": "400px" }}
-            mt={{ base: "2.5em" }}
-            textAlign={{ lg: "left" }}
-            fontSize={{ md: "1.125rem", xl: "1.25rem", "2xl": "1.25rem" }}
-            fontFamily="ibmSans"
-          >
-            {t("home:hero_text")}
-          </Text>
-          <Button
-            width="180px"
-            height="50px"
-            marginTop="8"
-            color="white"
-            bgColor="orange.500"
-            _hover={{ bg: "orange.400" }}
-            _active={{ bg: "orange.700" }}
-            boxShadow="0px 8px 15px rgba(0, 0, 0, .3)"
-          >
-            {t("home:book_now")}
-          </Button>
-        </Flex>
-        <HeroImageGrid />
-      </Flex>
+      <HeroSection />
       {/* New Suites For You Section */}
       <Flex
         as="section"

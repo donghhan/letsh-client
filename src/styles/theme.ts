@@ -1,15 +1,27 @@
-import { extendTheme, type ThemeConfig } from "@chakra-ui/react";
+import {
+  extendTheme,
+  type ThemeConfig,
+  defineStyleConfig,
+} from "@chakra-ui/react";
 import { StyleConfig } from "@chakra-ui/theme-tools";
 
 const components: Record<string, StyleConfig> = {
-  customButton: {
-    baseStyle: () => ({
-      bg: "orange.400",
+  StyledButton: {
+    baseStyle: ({ colorMode }) => ({
+      bg: "orange.500",
+      fontWeight: "bold",
+      fontFamily: "prompt",
+      width: "180px",
+      height: "50px",
+      color: "white",
+      borderRadius: "6px",
+      boxShadow:
+        colorMode === "light" ? "0px 8px 15px rgba(0, 0, 0, .3)" : "none",
       _hover: {
-        bg: "orange.300",
+        bg: "orange.400",
       },
-      _acitve: {
-        bg: "orange.500",
+      _active: {
+        bg: "orange.600",
       },
     }),
   },
