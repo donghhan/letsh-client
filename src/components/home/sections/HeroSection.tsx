@@ -24,7 +24,6 @@ export default function HeroSection() {
         "2xl": "10em",
       }}
       m={{
-        base: "5em 0",
         md: "9em 0",
         lg: "0",
       }}

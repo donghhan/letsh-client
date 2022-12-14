@@ -36,10 +36,8 @@ export default function Title({ titlePrefix, title, primary }: ITitle) {
               fontSize={{
                 base: "4rem",
                 sm: "4rem",
-                md: "5rem",
-                lg: "5.5rem",
-                xl: "7rem",
-                "2xl": "7rem",
+                md: "4.5rem",
+                xl: "6rem",
               }}
               lineHeight="1em"
               fontWeight="bold"

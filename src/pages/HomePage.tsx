@@ -1,3 +1,4 @@
+import { Box } from "@chakra-ui/react";
 import HeroSection from "../components/home/sections/HeroSection";
 import NewSuitesForYouSection from "../components/home/sections/NewSuitesSection";
 import HowDoesItWorkSection from "../components/home/sections/HowDoesItWorkSection";
@@ -6,7 +7,7 @@ import WhyPeopleChooseUsSection from "../components/home/sections/WhyPeopleChoos
 
 export default function HomePage() {
   return (
-    <>
+    <Box pt={{ base: "5em", md: "1em" }}>
       {/* Hero Section */}
       <HeroSection />
 
@@ -21,6 +22,6 @@ export default function HomePage() {
 
       {/* Why people choose us Section */}
       <WhyPeopleChooseUsSection />
-    </>
+    </Box>
   );
 }
