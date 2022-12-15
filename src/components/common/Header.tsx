@@ -157,6 +157,7 @@ export default function Header() {
       }}
       width="100%"
       position="fixed"
+      top="0"
       bgColor={colorMode === "light" ? "white" : "gray.800"}
       borderBottom={
         colorMode === "light" ? "1px solid lightgray" : "1px solid #505050"

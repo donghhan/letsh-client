@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import {
   Box,
   Button,
-  HStack,
-  StackDivider,
+  SimpleGrid,
+  Container,
   Flex,
   Text,
   IconButton,
+  Divider,
   Input,
   InputGroup,
   InputRightElement,
@@ -14,6 +15,7 @@ import {
   PopoverTrigger,
   PopoverCloseButton,
   PopoverContent,
+  useColorMode,
 } from "@chakra-ui/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -24,11 +26,12 @@ import {
   faMinus,
   faCalendar,
   faXmark,
-  faChevronUp,
-  faChevronDown,
+  faRightToBracket,
+  faRightFromBracket,
 } from "@fortawesome/free-solid-svg-icons";
 import { useRecoilValue } from "recoil";
 import { useTranslation } from "react-i18next";
+import StyledButton from "../common/Button";
 import Calendar from "react-calendar";
 import { roomLocationSearchState } from "../../atoms/RoomSearchAtom";
 
@@ -36,25 +39,22 @@ export default function FilterBar() {
   const [location, setLocation] = useState<string>("");
   const [guest, setGuest] = useState<number>(1);
   const [calendarToggle, setCalendarToggle] = useState<boolean>(false);
-  const [movein, setMovein] = useState<string>("");
 
   const roomSearch = useRecoilValue(roomLocationSearchState);
 
+  const { colorMode } = useColorMode();
   const { t } = useTranslation();
 
   return (
     <Flex
-      as="div"
-      width="100vw"
-      mt={{ lg: "1em" }}
-      p=".5em"
+      width="100%"
+      height="80px"
+      align="center"
+      justify="space-between"
       border="1px solid red"
     >
-      <HStack
-        width="calc(100% - 150px)"
-        divider={<StackDivider borderColor="gray.600" />}
-      >
-        <Flex minW={{ lg: "400px" }}>
+      <SimpleGrid columns={{ lg: 4 }} gap={{ lg: "1em" }}>
+        <Flex maxWidth={{ lg: "400px" }}>
           <span className="fa-stack fa-1x">
             <FontAwesomeIcon
               icon={faCircle}
@@ -97,6 +97,11 @@ export default function FilterBar() {
               ) : null}
             </InputGroup>
           </Flex>
+          <Divider
+            orientation="vertical"
+            borderColor="gray.700"
+            height="100%"
+          />
         </Flex>
         <Flex align="center" minW={{ lg: "300px" }}>
           <span className="fa-stack fa-1x">
@@ -133,6 +138,7 @@ export default function FilterBar() {
               />
             </Flex>
           </Flex>
+          <Divider orientation="vertical" borderColor="gray.700" />
         </Flex>
         <Flex align="center">
           <span className="fa-stack fa-1x">
@@ -142,7 +148,7 @@ export default function FilterBar() {
               style={{ color: "black" }}
             />
             <FontAwesomeIcon
-              icon={faCalendar}
+              icon={faRightToBracket}
               className="fa-stack-1x"
               style={{ color: "white" }}
             />
@@ -161,23 +167,52 @@ export default function FilterBar() {
                 <Text ml={{ lg: "1em" }} mr={{ lg: "3em" }}>
                   Move in
                 </Text>
-                {calendarToggle ? (
-                  <Text>
-                    <FontAwesomeIcon icon={faChevronUp} />
-                  </Text>
-                ) : (
-                  <Text>
-                    <FontAwesomeIcon icon={faChevronDown} />
-                  </Text>
-                )}
               </Flex>
             </PopoverTrigger>
+            <PopoverContent>
+              <PopoverCloseButton />
+              <Calendar />
+            </PopoverContent>
+          </Popover>
+          <Divider orientation="vertical" borderColor="gray.700" />
+        </Flex>
+        <Flex align="center">
+          <span className="fa-stack fa-1x">
+            <FontAwesomeIcon
+              icon={faCircle}
+              className="fa-stack-2x"
+              style={{ color: "black" }}
+            />
+            <FontAwesomeIcon
+              icon={faRightFromBracket}
+              className="fa-stack-1x"
+              style={{ color: "white" }}
+            />
+          </span>
+          <Popover>
+            <PopoverTrigger>
+              <Flex
+                as="div"
+                cursor="pointer"
+                onClick={() =>
+                  calendarToggle === true
+                    ? setCalendarToggle(false)
+                    : setCalendarToggle(true)
+                }
+              >
+                <Text ml={{ lg: "1em" }} mr={{ lg: "3em" }}>
+                  Move out
+                </Text>
+              </Flex>
+            </PopoverTrigger>
+            <PopoverContent>
+              <PopoverCloseButton />
+              <Calendar />
+            </PopoverContent>
           </Popover>
         </Flex>
-      </HStack>
-      <Button width="150px" bgColor="orange.400">
-        Search
-      </Button>
+      </SimpleGrid>
+      <StyledButton>Search</StyledButton>
     </Flex>
   );
 }
