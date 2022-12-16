@@ -6,14 +6,12 @@ import {
   faBed,
   faDoorOpen,
   faBath,
-  faMugHot,
-  faWifi,
-  faSquareParking,
   faStar,
 } from "@fortawesome/free-solid-svg-icons";
 import styled from "@emotion/styled";
 import { AiOutlineWifi } from "react-icons/ai";
 import { FaMugHot, FaParking } from "react-icons/fa";
+import { MdFreeCancellation } from "react-icons/md";
 import StyledButton from "../common/Button";
 import { IRoom } from "../../utils/interface";
 import * as freelancer from "../../assets/freelancer.svg";
@@ -30,7 +28,6 @@ export default function RoomGridCard({
   is_free_internet,
   is_free_parking,
   is_free_booking_cancelation,
-  number_of_beds,
   rating,
 }: IRoom) {
   return (
@@ -94,6 +91,14 @@ export default function RoomGridCard({
             Free Parking
           </Text>
         ) : null}
+        {is_free_booking_cancelation ? (
+          <Text>
+            <MdFreeCancellation
+              style={{ display: "inline", marginRight: ".5em" }}
+            />{" "}
+            Free Cancelation
+          </Text>
+        ) : null}
       </Box>
       <Box position="absolute" bottom="0" right="0" fontFamily="prompt">
         <Text
@@ -102,7 +107,7 @@ export default function RoomGridCard({
           fontWeight="bold"
           marginBottom=".5em"
         >
-          1500 Baht
+          {price_per_night} Baht
         </Text>
         <Link to={`room/${pk}`}>
           <StyledButton width="150px" height="45px">

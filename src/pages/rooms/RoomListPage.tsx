@@ -10,7 +10,7 @@ import { useQuery } from "@tanstack/react-query";
 import GuestInfoBar from "../../components/rooms/GustInfoBar";
 import FilterBar from "../../components/rooms/FilterBar";
 import RoomGridCard from "../../components/rooms/RoomGridCard";
-import { getRooms } from "../../api/roomsAPI";
+import { getRooms } from "../../api/rooms/roomsAPI";
 import { IRoom } from "../../utils/interface";
 
 export default function RoomListPage() {
@@ -47,16 +47,19 @@ export default function RoomListPage() {
             transform: "translateY(-5px)",
           }}
         >
-          <RoomGridCard name="The Redbury Hotel" />
-        </GridItem>
-        <GridItem border="1px solid green" p="1em">
-          <RoomGridCard name="The Redbury Hotel" />
-        </GridItem>
-        <GridItem border="1px solid green" p="1em">
-          <RoomGridCard name="The Redbury Hotel" />
-        </GridItem>
-        <GridItem border="1px solid green" p="1em">
-          <RoomGridCard name="The Redbury Hotel" />
+          {data?.map((room) => (
+            <RoomGridCard
+              pk={room.pk}
+              name="The Redbury Hotel"
+              price_per_night={room.price_per_night}
+              is_free_booking_cancelation={room.is_free_booking_cancelation}
+              is_free_breakfast={room.is_free_breakfast}
+              is_free_internet={room.is_free_internet}
+              is_free_parking={room.is_free_parking}
+              number_of_beds={room.number_of_beds}
+              rating={4}
+            />
+          ))}
         </GridItem>
       </Grid>
     </>
