@@ -13,6 +13,9 @@ export interface IRoom {
   is_free_parking: boolean;
   is_free_booking_cancelation: boolean;
   number_of_beds: number;
+  number_of_bedrooms: number;
+  number_of_bathrooms: number;
+  maximum_guests: number;
   rating: number;
   photos?: string[];
 }

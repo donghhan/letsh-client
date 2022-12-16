@@ -1,4 +1,11 @@
-import { Box, Image, Text, Flex } from "@chakra-ui/react";
+import {
+  Box,
+  Image,
+  Text,
+  Flex,
+  VisuallyHidden,
+  useColorMode,
+} from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -8,6 +15,7 @@ import {
   faBath,
   faStar,
 } from "@fortawesome/free-solid-svg-icons";
+import { useTranslation } from "react-i18next";
 import styled from "@emotion/styled";
 import { AiOutlineWifi } from "react-icons/ai";
 import { FaMugHot, FaParking } from "react-icons/fa";
@@ -28,10 +36,17 @@ export default function RoomGridCard({
   is_free_internet,
   is_free_parking,
   is_free_booking_cancelation,
+  maximum_guests,
+  number_of_beds,
+  number_of_bathrooms,
+  number_of_bedrooms,
   rating,
 }: IRoom) {
+  const { colorMode } = useColorMode();
+  const { t, i18n } = useTranslation();
+
   return (
-    <Box position="relative">
+    <Box>
       <Box marginBottom="1em">
         <Image src={freelancer.default} />
       </Box>
@@ -53,68 +68,88 @@ export default function RoomGridCard({
             <ColoredReviewStar icon={faStar} />
           </Box>
           <Link to="/">
-            <Text textDecoration="underline">All reviews</Text>
+            <Text textDecoration="underline">{t("rooms:all_reviews")}</Text>
           </Link>
         </Flex>
         <Text>Al seba Street - Dubai Marina</Text>
         <Flex gap="1em">
           <Text>
-            <FontAwesomeIcon icon={faUser} /> (1)
+            <FontAwesomeIcon icon={faUser} /> ({maximum_guests})
           </Text>
           <Text>
-            <FontAwesomeIcon icon={faBed} /> (1)
+            <FontAwesomeIcon icon={faBed} /> ({number_of_beds})
           </Text>
           <Text>
-            <FontAwesomeIcon icon={faDoorOpen} /> (1)
+            <FontAwesomeIcon icon={faDoorOpen} /> ({number_of_bedrooms})
           </Text>
           <Text>
-            <FontAwesomeIcon icon={faBath} /> (1)
+            <FontAwesomeIcon icon={faBath} /> ({number_of_bathrooms})
           </Text>
         </Flex>
       </Box>
-      <Box color="gray.600" marginTop="1.25em" fontSize=".9rem">
-        {is_free_breakfast ? (
-          <Text>
-            <FaMugHot style={{ display: "inline", marginRight: ".5em" }} />
-            Free Breakfast
+      <Flex
+        color={colorMode === "light" ? "gray.600" : "gray.400"}
+        marginTop="1.25em"
+        fontSize=".9rem"
+        position="relative"
+      >
+        <Flex direction="column" justify="end">
+          {is_free_breakfast ? (
+            <Text>
+              <FaMugHot style={{ display: "inline", marginRight: ".5em" }} />
+              {t("rooms:free_breakfast")}
+            </Text>
+          ) : (
+            <VisuallyHidden>{t("rooms:free_breakfast")}</VisuallyHidden>
+          )}
+          {is_free_internet ? (
+            <Text>
+              <AiOutlineWifi
+                style={{ display: "inline", marginRight: ".5em" }}
+              />
+              {t("rooms:free_wifi")}
+            </Text>
+          ) : (
+            <VisuallyHidden>{t("rooms:free_wifi")}</VisuallyHidden>
+          )}
+          {is_free_parking ? (
+            <Text>
+              <FaParking style={{ display: "inline", marginRight: ".5em" }} />{" "}
+              {t("rooms:free_parking")}
+            </Text>
+          ) : (
+            <VisuallyHidden>{t("rooms:free_parking")}</VisuallyHidden>
+          )}
+          {is_free_booking_cancelation ? (
+            <Text>
+              <MdFreeCancellation
+                style={{ display: "inline", marginRight: ".5em" }}
+              />{" "}
+              {t("rooms:free_cancelation")}
+            </Text>
+          ) : (
+            <VisuallyHidden>{t("rooms:free_cancelation")}</VisuallyHidden>
+          )}
+        </Flex>
+        <Box position="absolute" bottom="0" right="0" fontFamily="prompt">
+          <Text
+            color={colorMode === "light" ? "black" : "white"}
+            textAlign="center"
+            fontSize="1.5rem"
+            fontWeight="bold"
+            marginBottom=".5em"
+          >
+            {i18n.language === "en"
+              ? `${Math.round(price_per_night)} THB`
+              : `฿ ${Math.round(price_per_night)}`}
           </Text>
-        ) : null}
-        {is_free_internet ? (
-          <Text>
-            <AiOutlineWifi style={{ display: "inline", marginRight: ".5em" }} />
-            Free Wifi
-          </Text>
-        ) : null}
-        {is_free_parking ? (
-          <Text>
-            <FaParking style={{ display: "inline", marginRight: ".5em" }} />{" "}
-            Free Parking
-          </Text>
-        ) : null}
-        {is_free_booking_cancelation ? (
-          <Text>
-            <MdFreeCancellation
-              style={{ display: "inline", marginRight: ".5em" }}
-            />{" "}
-            Free Cancelation
-          </Text>
-        ) : null}
-      </Box>
-      <Box position="absolute" bottom="0" right="0" fontFamily="prompt">
-        <Text
-          textAlign="center"
-          fontSize="1.5rem"
-          fontWeight="bold"
-          marginBottom=".5em"
-        >
-          {price_per_night} Baht
-        </Text>
-        <Link to={`room/${pk}`}>
-          <StyledButton width="150px" height="45px">
-            Book now
-          </StyledButton>
-        </Link>
-      </Box>
+          <Link to={`accomodations/${pk}`}>
+            <StyledButton width="150px" height="45px">
+              {t("rooms:book_now")}
+            </StyledButton>
+          </Link>
+        </Box>
+      </Flex>
     </Box>
   );
 }

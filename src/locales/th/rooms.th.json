@@ -1,3 +1,10 @@
 {
-    "location_placeholder": "อยากไปที่ไหน?"
+    "location_placeholder": "อยากไปที่ไหน?",
+
+    "all_reviews": "รีวิวทั้งหมด",
+    "free_breakfast": "อาหารเช้าฟรี",
+    "free_wifi": "ฟรีไวไฟ",
+    "free_parking": "ที่จอดรถฟรี",
+    "free_cancelation": "ยกเลิกฟรี",
+    "book_now": "จองตอนนี้"
 }

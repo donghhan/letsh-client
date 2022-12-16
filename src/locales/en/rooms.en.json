@@ -1,3 +1,10 @@
 {
-    "location_placeholder": "Where do you want to go?"
+    "location_placeholder": "Where do you want to go?",
+
+    "all_reviews": "All reviews",
+    "free_breakfast": "Free Breakfast",
+    "free_wifi": "Free Wifi",
+    "free_parking": "Free Parking",
+    "free_cancelation": "Free Cancelation",
+    "book_now": "Book now"
 }
