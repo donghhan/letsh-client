@@ -6,6 +6,7 @@ export interface StyledButtonProps
 
 export interface IRoom {
   name: string;
+  pk: number;
   price_per_night: number;
   is_free_breakfast: boolean;
   is_free_internet: boolean;
@@ -13,5 +14,5 @@ export interface IRoom {
   is_free_booking_cancelation: boolean;
   number_of_beds: number;
   rating: number;
-  photos: string[];
+  photos?: string[];
 }

@@ -15,17 +15,24 @@ import styled from "@emotion/styled";
 import { AiOutlineWifi } from "react-icons/ai";
 import { FaMugHot, FaParking } from "react-icons/fa";
 import StyledButton from "../common/Button";
+import { IRoom } from "../../utils/interface";
 import * as freelancer from "../../assets/freelancer.svg";
 
 const ColoredReviewStar = styled(FontAwesomeIcon)`
   color: #d69e2e;
 `;
 
-interface IRoomGrid {
-  name: string;
-}
-
-export default function RoomGridCard({ name }: IRoomGrid) {
+export default function RoomGridCard({
+  name,
+  pk,
+  price_per_night,
+  is_free_breakfast,
+  is_free_internet,
+  is_free_parking,
+  is_free_booking_cancelation,
+  number_of_beds,
+  rating,
+}: IRoom) {
   return (
     <Box position="relative">
       <Box marginBottom="1em">
@@ -69,18 +76,24 @@ export default function RoomGridCard({ name }: IRoomGrid) {
         </Flex>
       </Box>
       <Box color="gray.600" marginTop="1.25em" fontSize=".9rem">
-        <Text>
-          <FaMugHot style={{ display: "inline", marginRight: ".5em" }} />
-          Free Breakfast
-        </Text>
-        <Text>
-          <AiOutlineWifi style={{ display: "inline", marginRight: ".5em" }} />
-          Free Wifi
-        </Text>
-        <Text>
-          <FaParking style={{ display: "inline", marginRight: ".5em" }} /> Free
-          Parking
-        </Text>
+        {is_free_breakfast ? (
+          <Text>
+            <FaMugHot style={{ display: "inline", marginRight: ".5em" }} />
+            Free Breakfast
+          </Text>
+        ) : null}
+        {is_free_internet ? (
+          <Text>
+            <AiOutlineWifi style={{ display: "inline", marginRight: ".5em" }} />
+            Free Wifi
+          </Text>
+        ) : null}
+        {is_free_parking ? (
+          <Text>
+            <FaParking style={{ display: "inline", marginRight: ".5em" }} />{" "}
+            Free Parking
+          </Text>
+        ) : null}
       </Box>
       <Box position="absolute" bottom="0" right="0" fontFamily="prompt">
         <Text
@@ -91,9 +104,11 @@ export default function RoomGridCard({ name }: IRoomGrid) {
         >
           1500 Baht
         </Text>
-        <StyledButton width="150px" height="45px">
-          Book now
-        </StyledButton>
+        <Link to={`room/${pk}`}>
+          <StyledButton width="150px" height="45px">
+            Book now
+          </StyledButton>
+        </Link>
       </Box>
     </Box>
   );
