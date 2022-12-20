@@ -6,7 +6,8 @@ export interface StyledButtonProps
 
 export interface IRoom {
   name: string;
-  pk: number;
+  id: number;
+  description?: string;
   price_per_night: number;
   is_free_breakfast: boolean;
   is_free_internet: boolean;
@@ -17,5 +18,19 @@ export interface IRoom {
   number_of_bathrooms: number;
   maximum_guests: number;
   rating: number;
-  photos?: string[];
+  photos?: IPhoto[];
+}
+
+export interface IRoomDetail extends IRoom {
+  owner: string;
+  amenities?: string[];
+  category?: string;
+  reviews?: string[];
+}
+
+export interface IPhoto {
+  pk: string;
+  file: string;
+  caption: string;
+  room?: string;
 }

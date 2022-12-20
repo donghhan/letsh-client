@@ -11,7 +11,7 @@ import GuestInfoBar from "../../components/rooms/GustInfoBar";
 import FilterBar from "../../components/rooms/FilterBar";
 import RoomGridCard from "../../components/rooms/RoomGridCard";
 import { getRooms } from "../../api/rooms/roomsAPI";
-import { IRoom } from "../../utils/interface";
+import { IRoom, IPhoto } from "../../utils/interface";
 import { rooms } from "../../locales/en/index.en";
 
 export default function RoomListPage() {
@@ -32,6 +32,7 @@ export default function RoomListPage() {
       >
         {data?.map((room) => (
           <GridItem
+            key={room.id}
             height="fit-content"
             p="2.5em"
             borderRadius="25px"
@@ -51,7 +52,8 @@ export default function RoomListPage() {
             position="relative"
           >
             <RoomGridCard
-              pk={room.pk}
+              key={room.id}
+              id={room.id}
               name={room.name}
               maximum_guests={room.maximum_guests}
               price_per_night={room.price_per_night}

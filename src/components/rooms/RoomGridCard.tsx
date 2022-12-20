@@ -30,7 +30,7 @@ const ColoredReviewStar = styled(FontAwesomeIcon)`
 
 export default function RoomGridCard({
   name,
-  pk,
+  id,
   price_per_night,
   is_free_breakfast,
   is_free_internet,
@@ -93,7 +93,7 @@ export default function RoomGridCard({
         fontSize=".9rem"
         position="relative"
       >
-        <Flex direction="column" justify="end">
+        <Flex direction="column" minH="90px">
           {is_free_breakfast ? (
             <Text>
               <FaMugHot style={{ display: "inline", marginRight: ".5em" }} />
@@ -143,7 +143,7 @@ export default function RoomGridCard({
               ? `${Math.round(price_per_night)} THB`
               : `฿ ${Math.round(price_per_night)}`}
           </Text>
-          <Link to={`accomodations/${pk}`}>
+          <Link to={`/rooms/${id}`}>
             <StyledButton width="150px" height="45px">
               {t("rooms:book_now")}
             </StyledButton>

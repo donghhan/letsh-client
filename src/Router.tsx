@@ -10,7 +10,7 @@ import RoomDetailPage from "./pages/rooms/RoomDetailPage";
 
 const router = createBrowserRouter([
   {
-    path: Path.home,
+    path: "/",
     element: <App />,
     errorElement: <NotFoundPage />,
     children: [
@@ -19,24 +19,22 @@ const router = createBrowserRouter([
         element: <HomePage />,
         children: [
           {
-            path: Path.signin,
+            path: "signin",
             element: <SigninPage />,
           },
           {
-            path: Path.signup,
+            path: "signup",
             element: <SignupPage />,
           },
         ],
       },
       {
-        path: Path.rooms,
+        path: "rooms",
         element: <RoomListPage />,
-        children: [
-          {
-            path: Path.roomDetail,
-            element: <RoomDetailPage />,
-          },
-        ],
+      },
+      {
+        path: "rooms/:id",
+        element: <RoomDetailPage />,
       },
     ],
   },
