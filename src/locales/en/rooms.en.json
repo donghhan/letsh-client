@@ -6,5 +6,9 @@
     "free_wifi": "Free Wifi",
     "free_parking": "Free Parking",
     "free_cancelation": "Free Cancelation",
-    "book_now": "Book now"
+    "book_now": "Book now",
+
+    "per_night": "/night",
+    "guests": "Guests",
+    "move_in": "Move in"
 }

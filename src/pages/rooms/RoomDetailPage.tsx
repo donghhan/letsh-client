@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Flex,
   Text,
@@ -6,15 +7,24 @@ import {
   GridItem,
   Box,
   Image,
+  Divider,
   Card,
   CardBody,
   CardHeader,
+  Stack,
   Heading,
+  IconButton,
+  StackDivider,
 } from "@chakra-ui/react";
+import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
+import { BiChevronDown } from "react-icons/bi";
+import { useTranslation } from "react-i18next";
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
+import StackedIcon from "../../components/common/StackedIcon";
 import { IRoomDetail } from "../../utils/interface";
 import { getRoomDetail } from "../../api/rooms/roomsAPI";
+import StyledButton from "../../components/common/Button";
 
 export default function RoomDetailPage() {
   const { id } = useParams();
@@ -22,7 +32,10 @@ export default function RoomDetailPage() {
     [`accomodations`, id],
     getRoomDetail
   );
-  console.log(data);
+
+  const [guest, setGuest] = useState<number>(1);
+
+  const { t } = useTranslation();
 
   return (
     <Flex
@@ -68,27 +81,114 @@ export default function RoomDetailPage() {
           </GridItem>
         ))}
       </Grid>
-      <Flex direction={{ lg: "column" }} mt={{ lg: "1em" }} p={{ lg: "0 7em" }}>
-        <Card variant="filled" width="40%">
-          <CardHeader>
-            <Heading fontSize="1.75rem" fontFamily="prompt">
-              Details
-            </Heading>
-          </CardHeader>
-          <CardBody lineHeight="2em">
-            <Text>{data?.description}</Text>
-          </CardBody>
-        </Card>
-        <Card variant="filled" width="40%" mt={{ lg: "3em" }}>
-          <CardHeader>
-            <Heading fontSize="1.75rem" fontFamily="prompt">
-              Apartment features
-            </Heading>
-          </CardHeader>
-          <CardBody lineHeight="2em">
-            <Text>{data?.description}</Text>
-          </CardBody>
-        </Card>
+      <Flex mt={{ lg: "2.5em" }} p={{ lg: "0 7em" }}>
+        <Box>
+          <Card variant="filled" width="40%">
+            <CardHeader>
+              <Heading fontSize="1.75rem" fontFamily="prompt">
+                Details
+              </Heading>
+            </CardHeader>
+            <CardBody lineHeight="2em">
+              {data?.description ? (
+                <Text>{data?.description}</Text>
+              ) : (
+                <Text>No other details available</Text>
+              )}
+            </CardBody>
+          </Card>
+          <Card variant="filled" width="40%" mt={{ lg: "3em" }}>
+            <CardHeader>
+              <Heading fontSize="1.75rem" fontFamily="prompt">
+                Apartment features
+              </Heading>
+            </CardHeader>
+            <CardBody
+              lineHeight="2em"
+              display="grid"
+              gridTemplateColumns={{ lg: "repeat(4, 1fr)" }}
+            >
+              <Text>{data?.description}</Text>
+            </CardBody>
+          </Card>
+        </Box>
+        <Box minW={{ lg: "400px" }}>
+          <Card textAlign="center" p={{ lg: ".5em 1.5em" }}>
+            <CardHeader>
+              <Heading>
+                ฿{data?.price_per_night}
+                <Text
+                  display="inline-block"
+                  fontSize="1.5rem"
+                  fontWeight="normal"
+                  ml=".5em"
+                >
+                  {t("rooms:per_night")}
+                </Text>
+              </Heading>
+            </CardHeader>
+            <Divider />
+            <CardBody>
+              <Flex
+                alignItems="center"
+                justify={"space-between"}
+                mb={{ lg: "1em" }}
+              >
+                <StackedIcon iconType="user" style={{ fontSize: "1.25rem" }} />
+                <Text
+                  ml={{ lg: "1.25em" }}
+                  fontFamily="prompt"
+                  fontSize="1.25rem"
+                >
+                  {t("rooms:guests")}
+                </Text>
+                <Flex
+                  as="div"
+                  alignItems={"center"}
+                  gap={{ lg: "1em" }}
+                  ml={{ lg: "1em" }}
+                >
+                  <IconButton
+                    aria-label="plus"
+                    size={"sm"}
+                    icon={<AiOutlinePlus />}
+                    onClick={() => setGuest(guest + 1)}
+                  />
+                  <Text>{guest}</Text>
+                  <IconButton
+                    aria-label="minus"
+                    size={"sm"}
+                    icon={<AiOutlineMinus />}
+                    onClick={() => (guest < 2 ? 1 : setGuest(guest - 1))}
+                  />
+                </Flex>
+              </Flex>
+              <Flex
+                alignItems={"center"}
+                justify={"flex-start"}
+                mb={{ lg: "2.5em" }}
+              >
+                <StackedIcon
+                  iconType="calendar"
+                  style={{ fontSize: "1.25rem" }}
+                />
+                <Text
+                  ml={{ lg: "1.25em" }}
+                  fontFamily="prompt"
+                  fontSize="1.25rem"
+                >
+                  {t("rooms:move_in")}
+                </Text>
+                <IconButton
+                  aria-label="dropdown menu button"
+                  size={"sm"}
+                  icon={<BiChevronDown />}
+                />
+              </Flex>
+              <StyledButton width="100%">Check availability</StyledButton>
+            </CardBody>
+          </Card>
+        </Box>
       </Flex>
     </Flex>
   );

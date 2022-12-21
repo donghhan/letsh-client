@@ -6,5 +6,9 @@
     "free_wifi": "ฟรีไวไฟ",
     "free_parking": "ที่จอดรถฟรี",
     "free_cancelation": "ยกเลิกฟรี",
-    "book_now": "จองตอนนี้"
+    "book_now": "จองตอนนี้",
+
+    "per_night": "/คืน",
+    "guests": "ลูกค้า",
+    "move_in": "ย้ายเข้า"
 }
