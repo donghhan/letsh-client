@@ -1,33 +1,39 @@
-import {
-  Flex,
-  Box,
-  Text,
-  Grid,
-  GridItem,
-  HStack,
-  VStack,
-  Button,
-  Modal,
-  useMediaQuery,
-} from "@chakra-ui/react";
+import { Flex, Box, Text, Grid, GridItem } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { Path } from "../../utils/path";
 import { useTranslation } from "react-i18next";
 import { FaFacebookSquare, FaInstagramSquare } from "react-icons/fa";
+import styled from "styled-components";
+
+const FooterSection = styled.footer`
+  width: 100%;
+  display: grid;
+  justify-content: center;
+  margin-top: 2em;
+
+  @media screen and (min-width: 768px) {
+    grid-template-columns: repeat(4, minmax(auto, 200px));
+    gap: 1em;
+  }
+
+  @media screen and (max-width: 767px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+const FooterGridItem = styled.ul`
+  border-bottom: none;
+
+  @media screen and (max-width: 768px) {
+    border-bottom: 1px solid gray;
+  }
+`;
 
 export default function Footer() {
   const { t } = useTranslation();
 
   return (
-    <Grid
-      as="footer"
-      width="100%"
-      justifyContent="center"
-      templateColumns={{ base: "1fr", md: "repeat(4, minmax(auto, 200px))" }}
-      gap={{ md: "1em" }}
-      p={{ base: "0 1.5em" }}
-      mt={{ base: "1.5em" }}
-    >
+    <FooterSection>
       <GridItem
         borderBottom={{
           base: "1px solid gray",
@@ -117,6 +123,6 @@ export default function Footer() {
           </Text>
         </Flex>
       </GridItem>
-    </Grid>
+    </FooterSection>
   );
 }
