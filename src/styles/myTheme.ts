@@ -7,6 +7,11 @@ const myTheme: DefaultTheme = {
     charmonman: "'Charmonman', cursive",
     rubik: "'Rubik Distressed', cursive",
   },
+  colors: {
+    orange300: "#F6AD55",
+    orange400: "#ED8936",
+    orange500: "#dd6b20",
+  },
 };
 
 export { myTheme };

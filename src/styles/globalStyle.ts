@@ -18,4 +18,8 @@ export const MyGlobalStyle = createGlobalStyle`
     button {
         background: transparent;
     }
+
+    span {
+        display: inline-block;
+    }
 `;

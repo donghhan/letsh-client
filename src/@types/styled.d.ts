@@ -8,5 +8,10 @@ declare module "styled-components" {
       charmonman: string;
       rubik: string;
     };
+    colors: {
+      orange300: string;
+      orange400: string;
+      orange500: string;
+    };
   }
 }
